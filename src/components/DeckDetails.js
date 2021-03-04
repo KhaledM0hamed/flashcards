@@ -54,7 +54,6 @@ class DeckDetails extends Component {
                     title="Refresh"
                     onPress={this.refresh}
                 />
-                <br />
                 <View >
                     <Text>💥Deck {deck.deckId} has {length} cards💥</Text>
                     <Button
@@ -64,7 +63,6 @@ class DeckDetails extends Component {
                             { deck: deck }
                         )}
                     />
-                    <br />
                     <Button
                         title="Quiz"
                         onPress={() => this.props.navigation.navigate(

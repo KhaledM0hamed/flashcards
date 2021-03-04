@@ -49,14 +49,12 @@ class NewCard extends React.Component {
                     style={styles.input}
                     placeholder='question'
                 />
-                <br/>
                 <TextInput
                     placeholder='answer'
                     value={this.state.answer}
                     style={styles.input}
                     onChangeText={(answer) => this.setState({ answer })}
                 />
-                <br/>
                 <Button
                     onPress={() => this.submitForm(this.state)}
                     title='submit'
@@ -76,8 +74,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     input: {
-        border: '2px solid black',
-        borderRadius: '20px',
+        // border: '2px solid black',
+        // borderRadius: '20px',
         width: 200,
         padding: 15,
     },

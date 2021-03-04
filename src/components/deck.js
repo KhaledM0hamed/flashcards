@@ -26,9 +26,9 @@ class Deck extends Component {
 
 const styles = StyleSheet.create({
     deck: {
-        border: '2px solid black',
+        // border: '2px solid black',
+        // borderRadius: '20px',
         width: 300,
-        borderRadius: '20px',
         flexDirection: 'column',
         paddingTop: 20,
         paddingBottom: 20,

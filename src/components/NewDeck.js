@@ -48,7 +48,6 @@ class NewDeck extends Component {
                     onChangeText={(id) => this.setState({ id })}
                     value={id}
                 />
-                <br/>
                 <Button
                     title='submit'
                     onPress={() => this.onSubmit(id)}
@@ -69,8 +68,8 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        border: '2px solid black',
-        borderRadius: '20px',
+        // border: '2px solid black',
+        // borderRadius: '20px',
         width: 200,
         padding: 15,
     },

@@ -45,13 +45,11 @@ class Home extends Component {
                     onPress={this.refresh}
                 />
                 <Text> refresh to update the dick list </Text>
-                <br/>
                 <Button
                     title="Remove all Decks"
                     onPress={this.removeAllDecks}
                 />
                 <Text>You will need to restart the app after removing </Text>
-                <br/>
                 <ScrollView>
                     {Object.keys(currentState).map((deck) => {
                         console.log('key', currentState[deck])
