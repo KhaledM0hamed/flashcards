@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { StyleSheet, View, TextInput, Button, Text, KeyboardAvoidingView, } from 'react-native';
 import { addCardAPI, addDeckAPI, getDecksAPI } from '../utils/api'
 import { withNavigation } from "react-navigation";
+import {addCard} from '../actions/index'
 
 class NewCard extends React.Component {
     constructor (props) {
@@ -34,7 +35,9 @@ class NewCard extends React.Component {
         }
         const card = { question: question, answer: answer }
         addCardAPI(deck.deckId, card)
-        navigation.goBack()
+        this.props.dispatch(addCard({id: deck.deckId, card}))
+        this.forceUpdate()
+        navigation.navigate('Home')
     }
 
     render() {

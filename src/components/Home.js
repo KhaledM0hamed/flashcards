@@ -3,11 +3,14 @@ import { connect } from 'react-redux'
 import { View, Text, Button, ScrollView, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
 import { receiveDecksAPI, removeAPI} from '../utils/api'
 import Deck from './deck'
+import {getDecks} from '../actions/index'
+import { handleInitialData } from '../actions/index';
+
 
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        // this.state = {}
         this.refresh = this.refresh.bind(this)
         this.removeAllDecks = this.removeAllDecks.bind(this)
     }
@@ -15,29 +18,39 @@ class Home extends Component {
     componentDidMount() {
         receiveDecksAPI()
             .then((results) => {
-                this.setState(() => ({
-                    ...results
-                }))
+                console.log(results)
+                this.props.dispatch(getDecks(results))
+        //         // this.setState(() => ({
+        //         //     ...results
+        //         // }))
             })
         this.forceUpdate()
+
+        // this.props.handleInitialData();
+
     }
 
     refresh = () => {
-        receiveDecksAPI().then((decks) => {
-            this.setState(() => ({
-                ...decks
-            }))
+        receiveDecksAPI()
+        .then((results) => {
+            console.log(results)
+            this.props.dispatch(getDecks(results))
         })
+        this.forceUpdate()
+
     }
 
     removeAllDecks = () => {
         removeAPI()
+        // console.log('remove after', this.props.state)
+        // this.props.dispatch(getDecks())
+        this.forceUpdate()
     }
 
     render() {
         const { navigate } = this.props.navigation
-        const currentState = this.state
-
+        const currentState = this.props.state
+        console.log(currentState)
         return (
             <View style={styles.container}>
                 <Button
@@ -89,10 +102,12 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps(state) {
+    console.log('state', state)
     return {
         state
     }
 }
+
 
 export default connect(mapStateToProps)(Home)
 

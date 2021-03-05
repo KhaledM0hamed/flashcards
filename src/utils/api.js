@@ -4,6 +4,7 @@ export const DECKS_STORAGE_KEY = 'UdacityMobileFlashCard'
 
 export async function receiveDecksAPI () {
     const result = JSON.parse(await AsyncStorage.getItem(DECKS_STORAGE_KEY))
+    console.log(result)
     return result
 }
 

@@ -1,3 +1,6 @@
+import { receiveDecksAPI } from '../utils/api';
+
+
 export const ADD_CARD = 'ADD_CARD'
 export const ADD_DECK = 'ADD_DECK'
 export const REMOVE_DECK = 'REMOVE_DECK'
@@ -13,14 +16,26 @@ export function addCard (data){
     }
 }
 
-export function addDeck (id) {
+// export function addDeck (id) {
+//     const deck = {
+//         [id] : {
+//             id,
+//             cards : []
+//         }
+//     }
+
+//     return {
+//         type: ADD_DECK,
+//         deck
+//     }
+// }
+export function addDeck (deckId) {
     const deck = {
-        [id] : {
-            id,
+        [deckId] : {
+            deckId,
             cards : []
         }
     }
-
     return {
         type: ADD_DECK,
         deck
@@ -47,3 +62,11 @@ export function getDecks ( decks ) {
         decks
     }
 }
+
+export function handleInitialData() {
+    return dispatch => {
+        return receiveDecksAPI().then(decks => {
+            dispatch(getDecks(decks));
+        });
+        };
+    }
